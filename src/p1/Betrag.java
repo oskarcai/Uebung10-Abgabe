@@ -16,12 +16,8 @@ public class Betrag {
         this.euro = euro;
     }
     public void setCent(int cent) {
-        if(cent >= 100) {
-            euro += cent / 100;
-            this.cent = cent % 100;
-        } else {
-            this.cent = cent;
-        }
+        euro += cent / 100;
+        this.cent = cent % 100;
     }
 
     // Getter:
