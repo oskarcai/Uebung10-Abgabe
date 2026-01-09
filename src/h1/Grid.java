@@ -50,19 +50,22 @@ public class Grid {
 
     // Methoden:
     public void computeNextGen() {
-        // Für alle Zell-Objekte im gridArray die Methode countLivingNeighbors(gridArray) ausführen
-        // -> Objektattribut isAliveNextGen (boolean) für alle Objekte setzen:
-        for(Cell[] row : gridArray) {
-            for(Cell cell : row) {
-                cell.countLivingNeighbors(gridArray);
-            }
-        }
         // -> Objekattribut alive (boolean) für alle Objekte aktualisieren mit isAliveNextGen:
         for(Cell[] row : gridArray) {
             for(Cell cell : row) {
                 cell.setAlive(cell.isAliveNextGen());
             }
         }
+        // Für alle Zell-Objekte im gridArray die Methode countLivingNeighbors(gridArray) ausführen
+        // -> Objektattribut isAliveNextGen (boolean) für nächste Generation für alle Zell-Objekte initialisieren:
+        for(Cell[] row : gridArray) {
+            for(Cell cell : row) {
+                cell.countLivingNeighbors(gridArray);
+            }
+        }
+        // 2 for-each-Schleifen, weil erst alive für alle
+        // -> 1.Schleife: Werte von alive für jedes Zell-Objekt mit isAliveNextGen neu initialisieren
+        // -> 2.Schleife: Für jedes Zell-Objekt Nachbarn wieder zählen und neuen Status für folgende Generation (isAliveNextGen) initialisieren
     }
 
     public void computeGeneration(int n) {

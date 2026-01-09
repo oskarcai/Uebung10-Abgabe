@@ -33,8 +33,8 @@ public class Cell {
     public void setNumLivingNeighbors(int numLivingNeighbors) {
         this.numLivingNeighbors = numLivingNeighbors;
     }
-    public void setIsAliveNextGen(boolean isAliveNextGen) {
-        this.isAliveNextGen = isAliveNextGen;
+    public void setAliveNextGen(boolean aliveNextGen) {
+        isAliveNextGen = aliveNextGen;
     }
 
     // Getter:
@@ -84,11 +84,12 @@ public class Cell {
     }
 
     private void decideNextStatus() {
-        if(alive) {
-            isAliveNextGen = numLivingNeighbors == 2 || numLivingNeighbors == 3;
-        } else {
-            isAliveNextGen = numLivingNeighbors == 3;
+        if(alive) { // wenn am Leben
+            isAliveNextGen = (numLivingNeighbors == 2) || (numLivingNeighbors == 3);    // -> überleben
+        } else {    // wenn nicht am Leben
+            isAliveNextGen = (numLivingNeighbors == 3);   // -> Geburt
         }
+        // sonst !isAliveNextGen
     }
 
 }
